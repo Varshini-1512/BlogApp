@@ -13,6 +13,7 @@ import {
   errorClass,
   articlePageWrapper,
 } from "../styles/common";
+import BASE_URL from './config/BaseApi'
 
 function EditArticle() {
   const location = useLocation();
@@ -41,7 +42,7 @@ function EditArticle() {
     console.log(data);
     data.articleid = article._id;
     console.log(data);
-    let res = await axios.put("http://localhost:4000/author-api/articles", data, { withCredentials: true });
+    let res = await axios.put(`${BASE_URL}/author-api/articles`, data, { withCredentials: true });
     console.log("res update atricle", res);
     navigate(`/article/${article._id}`, {
       state: res.data.payload,

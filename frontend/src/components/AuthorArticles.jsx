@@ -14,6 +14,7 @@ import {
   articleStatusActive,
   articleStatusDeleted,
 } from "../styles/common";
+import BASE_URL from './config/BaseApi'
 
 function AuthorArticles() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function AuthorArticles() {
       setLoading(true);
 
       try {
-        const res = await axios.get(`http://localhost:4000/author-api/article/${user._id}`, { withCredentials: true });
+        const res = await axios.get(`${BASE_URL}/author-api/article/${user._id}`, { withCredentials: true });
 
         setArticles(res.data.payload);
       } catch (err) {
@@ -65,9 +66,6 @@ function AuthorArticles() {
     return <p className={loadingClass}>Restoring session...</p>;
   }
 
-  // if (!user?.userId) {
-  //   return <p className={loadingClass}>Loading user...</p>;
-  // }
 
   if (loading) return <p className={loadingClass}>Loading articles...</p>;
   if (error) return <p className={errorClass}>{error}</p>;

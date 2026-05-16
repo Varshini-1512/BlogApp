@@ -11,6 +11,7 @@ import {
   ghostBtn,
   timestampClass,
 } from '../styles/common'
+import BASE_URL from './config/BaseApi'
 
 function UserDashboard() {
 
@@ -46,7 +47,7 @@ function UserDashboard() {
   const getArticles=async()=>{
     setLoading(true)
     try{
-    const res=await axios.get("http://localhost:4000/user-api/articles",{withCredentials:true})
+    const res=await axios.get(`${BASE_URL}/user-api/articles`,{withCredentials:true})
     console.log(res);
 
     setArticles(res.data.payload)

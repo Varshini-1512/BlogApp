@@ -20,6 +20,7 @@ import {
   inputClass,
 } from "../styles/common.js";
 import { useForm } from "react-hook-form";
+import BASE_URL from './config/BaseApi'
 
 function ArticleByID() {
   const { id } = useParams();
@@ -40,7 +41,7 @@ function ArticleByID() {
       setLoading(true);
 
       try {
-        const res = await axios.get(`http://localhost:4000/user-api/article/${id}`, { withCredentials: true });
+        const res = await axios.get(`${BASE_URL}/user-api/article/${id}`, { withCredentials: true });
 
         setArticle(res.data.payload);
       } catch (err) {
@@ -70,7 +71,7 @@ function ArticleByID() {
 
     try {
       const res = await axios.patch(
-        `http://localhost:4000/author-api/articles/${id}/status`,
+        `${BASE_URL}/author-api/articles/${id}/status`,
         { isArticleActive: newStatus },
         { withCredentials: true },
       );
@@ -105,7 +106,7 @@ function ArticleByID() {
     commentObj.articleId = article._id;
     commentObj.user = user._id;
     console.log(commentObj);
-    let res = await axios.put("http://localhost:4000/user-api/articles", commentObj, { withCredentials: true });
+    let res = await axios.put(`${BASE_URL}/user-api/articles`, commentObj, { withCredentials: true });
     if (res.status === 200) {
       toast.success(res.data.message);
       setArticle(res.data.payload);

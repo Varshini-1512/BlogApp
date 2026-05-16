@@ -14,6 +14,7 @@ import {
   loadingClass,
 } from "../styles/common";
 import { useAuth } from "../store/authStore";
+import BASE_URL from './config/BaseApi';
 
 function AddArticle() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function AddArticle() {
     articleObj.author=currentUser._id;
     try {
       await axios.post(
-        "http://localhost:4000/author-api/articles",
+        `${BASE_URL}/author-api/articles`,
         articleObj,
         { withCredentials: true }
       );

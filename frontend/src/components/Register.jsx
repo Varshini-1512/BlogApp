@@ -7,6 +7,7 @@ import {
 }
   from '../styles/common'
 import { useNavigate } from 'react-router'
+import BASE_URL from './config/BaseApi'
 
 function Register() {
 
@@ -34,7 +35,7 @@ function Register() {
       let { role, ...userObj } = newUser
       if (role === 'user') {
         // make api req to user-api
-        let resObj = await axios.post("http://localhost:4000/user-api/users", formData)
+        let resObj = await axios.post(`${BASE_URL}/user-api/users`, formData)
         // console.log("res obj is",resObj)
         if (resObj.status === 201) {
           // navigate to login
@@ -43,7 +44,7 @@ function Register() {
       }
       if (role === 'author') {
         // make api req to author-api
-        let resObj = await axios.post("http://localhost:4000/author-api/users", formData)
+        let resObj = await axios.post(`${BASE_URL}/author-api/users`, formData)
         // console.log("res obj is",resObj)
         if (resObj.status === 201) {
           // navigate to login

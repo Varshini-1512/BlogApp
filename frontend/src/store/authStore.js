@@ -1,6 +1,7 @@
 import axios from "axios";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import BASE_URL from "../components/config/BaseApi";
 
 export const useAuth = create(
   persist(
@@ -21,7 +22,7 @@ export const useAuth = create(
           });
 
           const res = await axios.post(
-            "http://localhost:4000/common-api/login",
+            `${BASE_URL}/common-api/login`,
             userCredObj,
             { withCredentials: true }
           );
@@ -69,7 +70,7 @@ export const useAuth = create(
           });
 
           await axios.get(
-            "http://localhost:4000/common-api/logout",
+            `${BASE_URL}/common-api/logout`,
             { withCredentials: true }
           );
 
@@ -101,7 +102,7 @@ export const useAuth = create(
           });
 
           const res = await axios.get(
-            "http://localhost:4000/common-api/check-auth",
+            `${BASE_URL}/common-api/check-auth`,
             { withCredentials: true }
           );
 
@@ -141,7 +142,7 @@ export const useAuth = create(
           });
 
           const res = await axios.put(
-            "http://localhost:4000/common-api/change-password",
+            `${BASE_URL}/common-api/change-password`,
             userCredObj,
             { withCredentials: true }
           );
