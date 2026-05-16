@@ -1,0 +1,101 @@
+# user register 
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "firstname":"gatla",
+    "lastname":"varshini",
+    "email":"user@gmail.com",
+    "password":"user123",
+    "profileImageUrl":"https://example.com/avaters/author.png"
+}
+
+### author register
+POST http://localhost:4000/author-api/users
+Content-Type: application/json
+
+{
+    "firstname":"G",
+    "lastname":"sanjana",
+    "email":"sanjana@example.com",
+    "password":"sanju123",
+    "profileImageUrl":"https://example.com/avaters/author.png"
+}
+
+### create article (author)
+POST http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "author":"69897a149a24e6bde3b79083",
+    "title":"sanjana",
+    "category":"programming",
+    "content":"content of test article"
+}
+### read article content
+GET http://localhost:4000/author-api/article/69897a149a24e6bde3b79083
+
+### update article 
+PUT http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+    "articleid":"69c4f42fbe567d8479888b35",
+    "title":"sanjana article1",
+    "category":"programming"
+}
+### delete the article permanently
+DELETE http://localhost:4000/author-api/article/698aa5514bed263eda6466f7/author/69897a149a24e6bde3b79083
+
+
+### logout
+GET http://localhost:4000/common-api/logout
+
+### read articles from the user
+GET http://localhost:4000/user-api/articles
+
+### add comments 
+PUT http://localhost:4000/user-api/articles
+Content-Type: application/json
+
+{
+    "user":"69afa9756284e3865213271a",
+    "articleId":"69c4f42fbe567d8479888b35",
+    "comment":"good article"
+}
+
+### login(common)
+POST http://localhost:4000/common-api/login
+Content-Type: application/json
+
+{
+    "email":"sanjana@example.com",
+    "password":"sanju123"
+}
+
+### block by admin
+PUT http://localhost:4000/admin-api/block/69896c52121d0acf0aa80faa
+
+### unblock by admin
+PUT http://localhost:4000/admin-api/unblock/69896c52121d0acf0aa80faa
+
+### change password
+PUT http://localhost:4000/common-api/change-password
+Content-Type: application/json
+
+{
+    "email":"sanjana@example.com",
+    "oldpassword":"sanjana123",
+    "newpassword":"sanju123"
+}
+
+### soft delete
+PATCH http://localhost:4000/author-api/articles/69898fdc6e288cc50b6aa352/status
+Content-Type: application/json
+
+{ 
+    "isArticleActive":  false
+}
+
+### refresh
+GET http://localhost:4000/common-api/check-auth
