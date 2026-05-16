@@ -125,7 +125,7 @@ export const useAuth = create(
             loading: false,
             isAuthenticated: false,
             currentUser: null,
-            error: err.response?.data?.error || "Unauthorized"
+            error: err.response?.data?.error
           });
         }
       },
